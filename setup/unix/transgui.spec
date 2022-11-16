@@ -2,13 +2,16 @@
 
 Name:		transgui
 Version:	5.18.0
-Release:	2%{?dist}
+Release:	1%{?dist}
 Summary:	Transmission BitTorrent client
 
 License:	GPLv2
 URL:		https://github.com/transmission-remote-gui/transgui
 Source0:	%{name}-%{version}.tar.gz
 BuildArch:	x86_64
+
+Requires: GeoIP
+Requires: GeoIP-GeoLite-data   
 
 BuildRequires:	lazarus
 BuildRequires:	fpc
@@ -47,7 +50,7 @@ install -m 644 -t %{buildroot}%{_datadir}/transgui/lang lang/transgui.*
 %{_datadir}/transgui/lang
 
 %changelog
-* Wed Nov 14 2022 David King <dave@daveking.com> - 5.18.0-2
-	Fixed to support Transmission 3.0
+* Wed Nov 16 2022 David King <dave@daveking.com> - 5.18.0-2
+	Fixes to support Transmission 3.0
 * Sat Dec 14 2019 David King <dave@daveking.com> - 5.18.0-1
 	Initial Version

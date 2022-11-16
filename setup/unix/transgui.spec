@@ -2,7 +2,7 @@
 
 Name:		transgui
 Version:	5.18.0
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Transmission BitTorrent client
 
 License:	GPLv2

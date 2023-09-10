@@ -27,8 +27,10 @@ functionality than builtin Transmission web interface.
 sed -i 's|@bindir@|%{_bindir}|g' snap/local/transgui.desktop
 
 %build
+sed -i.bak "s/'Version %s'/'Version %s Build $(git rev-list --abbrev-commit --max-count=1 HEAD)'/" "about.lfm"
 lazbuild -B transgui.lpi
 make %{?_smp_mflags}
+mv "about.lfm.bak" "about.lfm"
 
 %install
 mkdir -p %{buildroot}%{_bindir}

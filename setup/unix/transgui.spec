@@ -2,7 +2,7 @@
 
 Name:		transgui
 Version:	5.18.0
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Transmission BitTorrent client
 
 License:	GPLv2
@@ -52,6 +52,8 @@ install -m 644 -t %{buildroot}%{_datadir}/transgui/lang lang/transgui.*
 %{_datadir}/transgui/lang
 
 %changelog
+* Sun Sep 10 2023 David King <dave@daveking.com> - 5.18.0-3
+	Updated to latest development code from github.com
 * Wed Nov 16 2022 David King <dave@daveking.com> - 5.18.0-2
 	Fixes to support Transmission 3.0
 * Sat Dec 14 2019 David King <dave@daveking.com> - 5.18.0-1

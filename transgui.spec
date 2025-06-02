@@ -8,7 +8,7 @@ Summary:	Transmission BitTorrent client
 License:	GPLv2
 URL:		https://github.com/lighterowl/transgui
 Source0:	%{name}-%{version}.tar.gz
-Patch0:	gcc-libs.patch
+Patch0:		build/fedora/gcc-libs.patch
 BuildArch:	x86_64
 
 Requires: GeoIP

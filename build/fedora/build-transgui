@@ -89,7 +89,8 @@ else
 	SDK_DIR=${HOME}/.transgui_sdk
 	FPC_INSTALLDIR="${SDK_DIR}/fpc-3.2.4-rc1"
 	FPC_BASEPATH="${FPC_INSTALLDIR}/lib/fpc/3.2.4"
-
+    LAZ_INSTALLDIR="${SDK_DIR}/lazarus-4.0.0"
+    
 	mkdir -p ${SDK_DIR}
 	cd ${SDK_DIR}
 	
@@ -106,6 +107,7 @@ else
 
 	export PATH=${FPC_INSTALLDIR}/bin:${FPC_BASEPATH}:$PATH
 	fpcmkcfg -d basepath=${FPC_BASEPATH} -o ${HOME}/.fpc.cfg
+	echo "fpc version = $(fpc -iW)"
 
 	cd "$SDK_DIR"
 	LAZARUS_COMMIT='cadda6230398688d6106fe37fb0673a9a2bf0cf3'
@@ -114,7 +116,11 @@ else
 	mv "lazarus-${LAZARUS_COMMIT}" lazarus
 	cd lazarus
 	make bigide LCL_PLATFORM=qt5
-	make install
+	mkdir -p "${LAZ_INSTALLDIR}"
+	make PREFIX=$LAZ_INSTALLDIR install
+
+	export PATH=${LAZ_INSTALLDIR}/share/lazarus:${LAZ_INSTALLDIR}/bin:$PATH
+	echo "lazbuild version = $(lazbuild -v)"
 
 	cd "$SDK_DIR"
 	rm *.tar.bz2
@@ -126,7 +132,7 @@ else
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <EnvironmentOptions>
-    <LazarusDirectory Value="/usr/local/share/lazarus/"/>
+    <LazarusDirectory Value="${LAZ_INSTALLDIR}/share/lazarus/"/>
     <CompilerFilename Value="${FPC_INSTALLDIR}/bin/fpc"/>
   </EnvironmentOptions>
 </CONFIG>	

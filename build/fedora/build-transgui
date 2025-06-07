@@ -49,7 +49,7 @@ if [ "$container" != "oci" ]; then
 FROM ${BASE_IMAGE}
 RUN dnf -y upgrade
 RUN dnf -y group install development-tools
-RUN dnf -y install rpmdevtools fpc glibc-devel qt5pas-devel libX11-devel
+RUN dnf -y install rpmdevtools fpc glibc-devel qt5pas-devel libX11-devel gtk2-devel
 RUN rpmdev-setuptree
 __Dockerfile__
 	
@@ -114,7 +114,8 @@ else
 	tar xf lazarus-src.tar.bz2
 	mv "lazarus-${LAZARUS_COMMIT}" lazarus
 	cd lazarus
-	make bigide LCL_PLATFORM=qt5
+	#make bigide LCL_PLATFORM=qt5
+	make bigide LCL_PLATFORM=gtk2
 	mkdir -p "${LAZ_INSTALLDIR}"
 	make PREFIX=$LAZ_INSTALLDIR install
 

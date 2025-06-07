@@ -18,6 +18,8 @@ BuildRequires:	fpc >= 3.2.4
 BuildRequires:  openssl-devel
 BuildRequires:  dbus-devel
 
+BuildRequires:	gtk2-devel
+
 %description
 Transmission Remote GUI is feature rich cross platform front-end to remotely
 control Transmission daemon via its RPC protocol. It is faster and has more

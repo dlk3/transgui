@@ -13,8 +13,8 @@ BuildArch:	x86_64
 Requires: GeoIP
 Requires: GeoIP-GeoLite-data   
 
-BuildRequires:	lazarus
-BuildRequires:	fpc
+BuildRequires:	lazarus >= 4.0.0
+BuildRequires:	fpc >= 3.2.4
 BuildRequires:  openssl-devel
 BuildRequires:  dbus-devel
 

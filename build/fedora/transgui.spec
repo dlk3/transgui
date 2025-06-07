@@ -48,7 +48,7 @@ install -m 644 -t %{buildroot}%{_datadir}/transgui/lang lang/transgui.*
 %{_datadir}/transgui/lang
 
 %changelog
-* Fri Jun 6 2025 David King <dave@daveking.com> - 5.18.8.f-1
+* Fri Jun 6 2025 David King <dave@daveking.com> - 5.18.7.f-1
 	Changed build process to use fpc-3.2.4 and lazarus-4.0.0
 * Fri May 30 2025 David King <dave@daveking.com> - 5.18.8.f-0
 	Migrated to the lighterowl fork to fix issue restoring window size on restart

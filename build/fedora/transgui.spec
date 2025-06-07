@@ -17,7 +17,7 @@ BuildRequires:	lazarus >= 4.0.0
 BuildRequires:	fpc >= 3.2.4
 BuildRequires:  openssl-devel
 BuildRequires:  dbus-devel
-
+#  Required for GTK compile, i.e., without "--ws=qt5" option
 BuildRequires:	gtk2-devel
 
 %description

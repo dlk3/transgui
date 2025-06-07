@@ -47,7 +47,6 @@ if [ "$container" != "oci" ]; then
 	#  Create the Dockerfile that will be used to build the container
 	cat >/tmp/Dockerfile << __Dockerfile__
 FROM ${BASE_IMAGE}
-
 RUN dnf -y upgrade
 RUN dnf -y group install development-tools
 RUN dnf -y install rpmdevtools fpc glibc-devel qt5pas-devel libX11-devel

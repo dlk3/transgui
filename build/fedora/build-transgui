@@ -57,7 +57,7 @@ FROM ${FEDORA_IMAGE}
 
 RUN dnf -y upgrade
 RUN dnf -y group install development-tools
-RUN dnf -y install rpmdevtools fpc glibc-devel qt5pas-devel libX11-devel
+RUN dnf -y install rpmdevtools fpc glibc-devel qt6pas-devel libX11-devel
 RUN rpmdev-setuptree
 __Dockerfile__
 	

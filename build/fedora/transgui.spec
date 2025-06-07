@@ -27,7 +27,7 @@ functionality than builtin Transmission web interface.
 %setup -q
 
 %build
-lazbuild transgui.lpi
+lazbuild --bm=Release --ws=qt5 transgui.lpi
 
 %install
 mkdir -p %{buildroot}%{_bindir}

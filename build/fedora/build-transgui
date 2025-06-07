@@ -57,7 +57,7 @@ FROM ${FEDORA_IMAGE}
 
 RUN dnf -y upgrade
 RUN dnf -y group install development-tools
-RUN dnf -y install rpmdevtools fpc glibc-devel qt6pas-devel libX11-devel
+RUN dnf -y install rpmdevtools fpc glibc-devel qt5pas-devel libX11-devel
 RUN rpmdev-setuptree
 __Dockerfile__
 	
@@ -120,7 +120,7 @@ else
 	tar xf lazarus-src.tar.bz2
 	mv "lazarus-${LAZARUS_COMMIT}" lazarus
 	cd lazarus
-	make bigide LCL_PLATFORM=qt6
+	make bigide LCL_PLATFORM=qt5
 	make install
 
 	cd "$SDK_DIR"
@@ -142,7 +142,7 @@ __EOF__
 	#  Fetch the SPEC file from my fork of lighterowl's transgui repo
 	curl -L -o ${HOME}/rpmbuild/SPECS/transgui.spec "https://raw.githubusercontent.com/dlk3/transgui/refs/heads/copr/build/fedora/transgui.spec"
 
-	#  Comment out the fpc and lazarus package BuildRequires in the specfile
+	#  Comment out the fpc and lazarus package BuildRequires in the SPEC file
 	sed -i 's/\(^BuildRequires:.*fpc.*\)/# \1/' ${HOME}/rpmbuild/SPECS/transgui.spec
 	sed -i 's/\(^BuildRequires:.*lazarus.*\)/# \1/' ${HOME}/rpmbuild/SPECS/transgui.spec
 	#  Make sure the rest of the BuildRequires get installed

@@ -120,7 +120,7 @@ else
 	tar xf lazarus-src.tar.bz2
 	mv "lazarus-${LAZARUS_COMMIT}" lazarus
 	cd lazarus
-	make bigide LCL_PLATFORM=qt5
+	make bigide LCL_PLATFORM=qt6
 	make install
 
 	cd "$SDK_DIR"

@@ -1,7 +1,7 @@
 %define  debug_package %{nil}
 
 Name:		transgui
-Version:	5.18.8.f
+Version:	5.18.7.f
 Release:	1%{?dist}
 Summary:	Transmission BitTorrent client
 

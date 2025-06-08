@@ -51,8 +51,8 @@ make bigide
 %install
 make install INSTALL_PREFIX=%{buildroot}/usr _LIB=%{_libdir}
 install -d %{buildroot}%{_sysconfdir}/lazarus
-sed 's#__LAZARUSDIR__#%{_libdir}/%{name}#;s#__FPCSRCDIR__#%{_datadir}/fpcsrc#' \
-        lazarus/tools/install/linux/environmentoptions.xml \
+sed 's#__LAZARUSDIR__#%{_sharedir}/%{name}#;s#__FPCSRCDIR__#%{_libdir}/%{name}/%{version}#' \
+        %{_datadir}/lazarus/tools/install/linux/environmentoptions.xml \
         > %{buildroot}%{_sysconfdir}/lazarus/environmentoptions.xml
 
 %files

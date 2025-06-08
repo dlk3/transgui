@@ -128,9 +128,11 @@ else
 
 	#  Create the Lazarus config file
 	mkdir /etc/lazarus
-	sed 's#__LAZARUSDIR__#${LAZ_INSTALLDIR}/share/lazarus#;s#__FPCSRCDIR__#${FPC_INSTALLDIR}/bin/fpc#' \
-        ${LAZ_INSTALLDIR}/lazarus/tools/install/linux/environmentoptions.xml \
+	sed 's#__LAZARUSDIR__#${LAZ_INSTALLDIR}/share/lazarus#;s#__FPCSRCDIR__#${FPC_INSTALLDIR}/lib64/fpc/3.2.4#' \
+        ${LAZ_INSTALLDIR}/share/lazarus/tools/install/linux/environmentoptions.xml \
         > /etc/lazarus/environmentoptions.xml
+
+	/bin/sh
 
 	#  Fetch the SPEC file from my fork of lighterowl's transgui repo
 	curl -L -o ${HOME}/rpmbuild/SPECS/transgui.spec "https://raw.githubusercontent.com/dlk3/transgui/refs/heads/copr/build/fedora/transgui.spec"

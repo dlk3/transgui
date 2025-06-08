@@ -30,10 +30,10 @@ make all
 
 %install
 make PREFIX=%{buildroot}/usr install
-mv %{buildroot}/usr/lib %{buildroot}${_libdir}
-mkdir %{buildroot}${_sysconfigdir}
-%{buildroot}/usr/lib64/%{name}/%{version}/samplecfg /usr/lib64/${name}/%version} ${buildroot}${_sysconfigdir}
-install -m 644 -t %{buildroot}${_sysconfigdir}/profile.d fpc.sh
+mv %{buildroot}/usr/lib %{buildroot}%{_libdir}
+mkdir %{buildroot}%{_sysconfigdir}
+%{buildroot}/usr/lib64/%{name}/%{version}/samplecfg /usr/lib64/%{name}/%version} %{buildroot}%{_sysconfigdir}
+install -m 644 -t %{buildroot}%{_sysconfigdir}/profile.d fpc-path.sh
 
 %files
 %{_bindir}/*
@@ -48,5 +48,5 @@ export PATH="%{_libdir}/%{name}/%{version}:$PATH
 export
 
 %changelog
-* Sun Jun 08 2025 dlk3 <dave@daveking.com> 3.2.4-1
-- Test removing --nowait option from COPR build process (dave@daveking.com)
+* Sun Jun 08 2025 dlk3 <dave@daveking.com> 3.2.4-0
+- Package creation

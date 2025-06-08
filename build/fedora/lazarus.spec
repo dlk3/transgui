@@ -13,9 +13,17 @@ BuildArch:	x86_64
 
 Requires:	fpc >= 3.2.2
 BuildRequires:	fpc >= 3.2.2
-BuildRequires: 	cmake
-BuildRequires: 	glibc-devel
-BuildRequires: 	cmake
+BuildRequires:  binutils
+BuildRequires:  desktop-file-utils
+BuildRequires:  gcc-c++
+BuildRequires:  glibc-devel
+BuildRequires:  gtk2-devel
+BuildRequires:  libappstream-glib
+BuildRequires:  make
+BuildRequires:  perl-generators
+BuildRequires:  qt5-qtbase-devel
+BuildRequires:  qt5-qtx11extras-devel
+BuildRequires:  qt6-qtbase-devel
 
 %description
 Lazarus is an IDE to create (graphical and console) applications with

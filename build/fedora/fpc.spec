@@ -1,7 +1,6 @@
 %define  debug_package %{nil}
 
 #  FPC source: https://gitlab.com/freepascal.org/fpc/source/-/archive/56baf314b5ebf4e5a44fe3e214914fa2e1b34adb/source-56baf314b5ebf4e5a44fe3e214914fa2e1b34adb.tar.bz2
-%define fpc_commit 56baf314b5ebf4e5a44fe3e214914fa2e1b34adb
 
 Name:		fpc
 Version:	3.2.4
@@ -38,7 +37,6 @@ install -m 644 -Dt %{buildroot}%{_sysconfdir}/profile.d fpc-path.sh
 %{_libdir}/%{name}
 %{_libdir}/libpas2jslib.so*
 %{_sysconfdir}/profile.d/*
-%config(noreplace) %{_sysconfdir}/fpc.cfg
 %dir %{_defaultdocdir}/%{name}-%{version}/
 %doc %{_defaultdocdir}/%{name}-%{version}/*
 
@@ -49,4 +47,4 @@ export
 
 %changelog
 * Sun Jun 08 2025 dlk3 <dave@daveking.com> 3.2.4-0
-- Package creation
+- Initial version of package

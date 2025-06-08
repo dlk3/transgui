@@ -49,12 +49,13 @@ Lazarus Component Library (LCL).
 make bigide
 
 %install
-make PREFIX=%{buildroot}/usr install
+make install INSTALL_PREFIX=%{buildroot}/usr _LIB=%{_libdir}
 install -m 644 -Dt %{buildroot}%{_sysconfdir}/profile.d lazarus-path.sh
 
 %files
 %{_bindir}
 %{_datadir}
+%{_sysconfdir}/profile.d/*
 
 %post
 source %{_sysconfdir}/profile.d/lazarus-path.sh

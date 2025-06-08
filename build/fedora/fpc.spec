@@ -28,8 +28,9 @@ package.  Do not install this on your workstation, it will break stuff.
 make all
 
 %install
-make PREFIX=%{buildroot}/usr install
-mv %{buildroot}/usr/lib %{buildroot}%{_libdir}
+#make PREFIX=%{buildroot}/usr install
+#mv %{buildroot}/usr/lib %{buildroot}%{_libdir}
+make install INSTALL_PREFIX=%{buildroot}/usr _LIB=%{_libdir}
 install -m 644 -Dt %{buildroot}%{_sysconfdir}/profile.d fpc-path.sh
 
 %files

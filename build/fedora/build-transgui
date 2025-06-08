@@ -127,16 +127,10 @@ else
 	##  End of code theft
 
 	#  Create the Lazarus config file
-    mkdir -p ${HOME}/.lazarus
-    cat >${HOME}/.lazarus/environmentoptions.xml << __EOF__
-<?xml version="1.0" encoding="UTF-8"?>
-<CONFIG>
-  <EnvironmentOptions>
-    <LazarusDirectory Value="${LAZ_INSTALLDIR}/share/lazarus/"/>
-    <CompilerFilename Value="${FPC_INSTALLDIR}/bin/fpc"/>
-  </EnvironmentOptions>
-</CONFIG>	
-__EOF__
+	mkdir /etc/lazarus
+	sed 's#__LAZARUSDIR__#${LAZ_INSTALLDIR}/share/lazarus#;s#__FPCSRCDIR__#${FPC_INSTALLDIR}/bin/fpc#' \
+        ${LAZ_INSTALLDIR}/lazarus/tools/install/linux/environmentoptions.xml \
+        > /etc/lazarus/environmentoptions.xml
 
 	#  Fetch the SPEC file from my fork of lighterowl's transgui repo
 	curl -L -o ${HOME}/rpmbuild/SPECS/transgui.spec "https://raw.githubusercontent.com/dlk3/transgui/refs/heads/copr/build/fedora/transgui.spec"

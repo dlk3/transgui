@@ -50,16 +50,15 @@ make bigide
 
 %install
 make install INSTALL_PREFIX=%{buildroot}/usr _LIB=%{_libdir}
-install -m 644 -Dt %{buildroot}%{_sysconfdir}/profile.d lazarus-path.sh
+install -d %{buildroot}%{_sysconfdir}/lazarus
+sed 's#__LAZARUSDIR__#%{_libdir}/%{name}#;s#__FPCSRCDIR__#%{_datadir}/fpcsrc#' \
+        lazarus/tools/install/linux/environmentoptions.xml \
+        > %{buildroot}%{_sysconfdir}/lazarus/environmentoptions.xml
 
 %files
 %{_bindir}
 %{_datadir}
-%{_sysconfdir}/profile.d/*
-
-%post
-source %{_sysconfdir}/profile.d/lazarus-path.sh
-export
+%{_sysconfdir}/lazarus/*
 
 %changelog
 * Thu Jun 05 2025 dlk3 <dave@daveking.com> 4.0.0-0

@@ -56,8 +56,8 @@ sed 's#__LAZARUSDIR__#%{_datadir}/%{name}#;s#__FPCSRCDIR__#%{_libdir}/%{name}/%{
         > %{buildroot}%{_sysconfdir}/lazarus/environmentoptions.xml
 
 %files
-%{_bindir}
-%{_datadir}
+%{_bindir}/*
+%{_datadir}/*
 %{_sysconfdir}/lazarus/*
 
 %changelog

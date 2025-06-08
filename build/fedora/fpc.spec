@@ -31,15 +31,17 @@ make all
 %install
 make PREFIX=%{buildroot}/usr install
 mv %{buildroot}/usr/lib %{buildroot}%{_libdir}
-mkdir %{buildroot}%{_sysconfigdir}
-%{buildroot}/usr/lib64/%{name}/%{version}/samplecfg /usr/lib64/%{name}/%version} %{buildroot}%{_sysconfdir}
+install -m 755 -d %{buildroot}%{_sysconfigdir}
+%{buildroot}%{_libdir}/%{name}/%{version}/samplecfg %{_libdir}/%{name}/%version} %{buildroot}%{_sysconfdir}
+install -m 755 -d %{buildroot}%{_sysconfdir}/profile.d
 install -m 644 -t %{buildroot}%{_sysconfdir}/profile.d fpc-path.sh
 
 %files
 %{_bindir}/*
 %{_libdir}/%{name}
 %{_libdir}/libpas2jslib.so*
-%config(noreplace) %{_sysconfdir}/*
+%{_sysconfdir}/profile.d/*
+%config(noreplace) %{_sysconfdir}/fpc.cfg
 %dir %{_defaultdocdir}/%{name}-%{version}/
 %doc %{_defaultdocdir}/%{name}-%{version}/*
 

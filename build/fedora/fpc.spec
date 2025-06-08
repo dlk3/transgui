@@ -32,8 +32,8 @@ make all
 make PREFIX=%{buildroot}/usr install
 mv %{buildroot}/usr/lib %{buildroot}%{_libdir}
 mkdir %{buildroot}%{_sysconfigdir}
-%{buildroot}/usr/lib64/%{name}/%{version}/samplecfg /usr/lib64/%{name}/%version} %{buildroot}%{_sysconfigdir}
-install -m 644 -t %{buildroot}%{_sysconfigdir}/profile.d fpc-path.sh
+%{buildroot}/usr/lib64/%{name}/%{version}/samplecfg /usr/lib64/%{name}/%version} %{buildroot}%{_sysconfdir}
+install -m 644 -t %{buildroot}%{_sysconfdir}/profile.d fpc-path.sh
 
 %files
 %{_bindir}/*
@@ -44,7 +44,7 @@ install -m 644 -t %{buildroot}%{_sysconfigdir}/profile.d fpc-path.sh
 %doc %{_defaultdocdir}/%{name}-%{version}/*
 
 %post
-export PATH="%{_libdir}/%{name}/%{version}:$PATH
+source %{buildroot}%{_sysconfdir}/profile.d/fpc-path.sh
 export
 
 %changelog

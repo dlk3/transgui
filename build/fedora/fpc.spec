@@ -1,10 +1,10 @@
 %define  debug_package %{nil}
 
-#  FPC source: https://gitlab.com/freepascal.org/fpc/source/-/archive/56baf314b5ebf4e5a44fe3e214914fa2e1b34adb/source-56baf314b5ebf4e5a44fe3e214914fa2e1b34adb.tar.bz2
+#  FPC source bundle: https://gitlab.com/freepascal.org/fpc/source/-/archive/56baf314b5ebf4e5a44fe3e214914fa2e1b34adb/source-56baf314b5ebf4e5a44fe3e214914fa2e1b34adb.tar.bz2
 
 Name:		fpc
 Version:	3.2.4
-Release:	0%{dist}
+Release:	0%{?dist}
 Summary:	Free Pascal Compiler
 License:	GPLv2+ and LGPLv2+ with exceptions # https://wiki.lazarus.freepascal.org/FPC_modified_LGPL
 URL:		https://www.freepascal.org

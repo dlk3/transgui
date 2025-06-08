@@ -1,5 +1,7 @@
 %define  debug_package %{nil}
 
+#  Lazarus source bundle: https://gitlab.com/dkk089/lazarus/-/archive/cadda6230398688d6106fe37fb0673a9a2bf0cf3/lazarus-cadda6230398688d6106fe37fb0673a9a2bf0cf3.tar.bz2
+
 Name:		lazarus
 Version:	4.0.0
 Release:	0%{?dist}

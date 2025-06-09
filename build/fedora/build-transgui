@@ -193,6 +193,4 @@ else
 	echo "$(date "$DATEFMT"): Copying the RPM to ${TARGET_DIR}"
 	mkdir -p ${TARGET_DIR}/RPMS
 	cp -rv /root/rpmbuild/RPMS/* ${TARGET_DIR}/RPMS/
-
-	/bin/sh
 fi

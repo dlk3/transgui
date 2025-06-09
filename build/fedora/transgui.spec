@@ -17,7 +17,7 @@ BuildRequires:	lazarus >= 4.0.0
 BuildRequires:	fpc >= 3.2.4
 BuildRequires:  openssl-devel
 BuildRequires:  dbus-devel
-BuildRequires:	gtk2-devel
+BuildRequires:  glibc-devel
 
 %description
 Transmission Remote GUI is feature rich cross platform front-end to remotely

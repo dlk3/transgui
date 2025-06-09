@@ -61,7 +61,6 @@ ln -sf %{_libdir}/%{name}/%{version}/%{ppcname} %{buildroot}%{_bindir}/%{ppcname
 %doc %{_defaultdocdir}/%{name}-%{version}/*
 
 %post
-source %{_sysconfdir}/profile.d/fpc-path.sh
 %{_libdir}/%{name}/%{version}/samplecfg %{_libdir}/%{name}/%version} %{_sysconfdir}
 export
 

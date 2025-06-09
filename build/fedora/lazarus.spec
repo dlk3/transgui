@@ -9,6 +9,7 @@ Summary:	Lazarus Component Library and IDE for Free Pascal
 License:	GPLv2+ and LGPLv2+ with exceptions # https://sourceforge.net/p/lazarus/laz.git/ci/lazarus_4_0/tree/COPYING.txt
 URL:		https://www.lazarus-ide.org/
 Source0:	%{name}-%{version}.tar.gz
+Patch0:		makefile.patch
 BuildArch:	x86_64
 
 Requires:	fpc >= 3.2.2
@@ -46,20 +47,22 @@ Lazarus Component Library (LCL).
 
 %prep
 %setup -q
+%patch -P0 -p1
 
 %build
-make bigide
+make bigide LCL_PLATFORM=qt5
 
 %install
-make install INSTALL_PREFIX=%{buildroot}/usr _LIB=%{_libdir}
+make install INSTALL_PREFIX=%{buildroot}/usr
 install -d %{buildroot}%{_sysconfdir}/lazarus
-sed 's#__LAZARUSDIR__#%{_datadir}/%{name}#;s#__FPCSRCDIR__#%{_libdir}/%{name}/%{version}#' \
-        %{buildroot}%{_datadir}/lazarus/tools/install/linux/environmentoptions.xml \
+sed 's#__LAZARUSDIR__#%{_libdir}/%{name}#;s#__FPCSRCDIR__#%{_libdir}/%{name}/%{version}#' \
+        %{buildroot}%{_libdir}/lazarus/tools/install/linux/environmentoptions.xml \
         > %{buildroot}%{_sysconfdir}/lazarus/environmentoptions.xml
 
 %files
 %{_bindir}/*
 %{_datadir}/*
+%{_libdir}/*
 %{_sysconfdir}/lazarus/*
 
 %changelog

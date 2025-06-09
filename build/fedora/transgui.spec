@@ -17,6 +17,7 @@ BuildRequires:	lazarus >= 4.0.0
 BuildRequires:	fpc >= 3.2.4
 BuildRequires:  openssl-devel
 BuildRequires:  dbus-devel
+BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
 
 %description

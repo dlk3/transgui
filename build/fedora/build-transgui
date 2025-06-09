@@ -28,7 +28,11 @@
 #  in the $RPM_OUTPUT_DIR subdirectory.
 #
 #################################################################################
- 
+
+#  This URL points to my github.com fork of lighterowl's fork of transgui, where
+#  I have posted a few additional assets that are used to build my transgui package
+FORK_URL="https://raw.githubusercontent.com/dlk3/transgui/refs/heads/copr/build/fedora" 
+
 CONTAINER_NAME="transgui-builder"
 BASE_IMAGE="fedora:41"
 RPM_OUTPUT_DIR=${HOME}/rpmbuild
@@ -132,10 +136,8 @@ else
         ${LAZ_INSTALLDIR}/share/lazarus/tools/install/linux/environmentoptions.xml \
         > /etc/lazarus/environmentoptions.xml
 
-	/bin/sh
-
 	#  Fetch the SPEC file from my fork of lighterowl's transgui repo
-	curl -L -o ${HOME}/rpmbuild/SPECS/transgui.spec "https://raw.githubusercontent.com/dlk3/transgui/refs/heads/copr/build/fedora/transgui.spec"
+	curl -L -o ${HOME}/rpmbuild/SPECS/transgui.spec "${FORK_URL}/transgui.spec"
 
 	#  Comment out the fpc and lazarus package BuildRequires in the SPEC file
 	sed -i 's/\(^BuildRequires:.*fpc.*\)/# \1/' ${HOME}/rpmbuild/SPECS/transgui.spec
@@ -151,8 +153,8 @@ else
 
 	#  Fetch the transgui.desktop file and transgui.png icon from my fork of 
 	#  lighterowl's transgui repo
-	curl -L -o transgui-${TRANSGUI_VERSION}/transgui.desktop "https://raw.githubusercontent.com/dlk3/transgui/refs/heads/copr/build/fedora/transgui.desktop"
-	curl -L -o transgui-${TRANSGUI_VERSION}/transgui.png "https://raw.githubusercontent.com/dlk3/transgui/refs/heads/copr/build/fedora/transgui.png"
+	curl -L -o transgui-${TRANSGUI_VERSION}/transgui.desktop "${FORK_URL}/transgui.desktop"
+	curl -L -o transgui-${TRANSGUI_VERSION}/transgui.png "${FORK_URL}/transgui.png"
 
 	#  Create the source tar.gz
 	tar czf ${HOME}/rpmbuild/SOURCES/transgui-${TRANSGUI_VERSION}.tar.gz transgui-${TRANSGUI_VERSION}

@@ -1,8 +1,8 @@
 %define  debug_package %{nil}
 
 Name:		transgui
-Version:	5.18.7.f
-Release:	1%{?dist}
+Version:	5.18.8.f
+Release:	0%{?dist}
 Summary:	Transmission BitTorrent client
 
 License:	GPLv2
@@ -17,7 +17,6 @@ BuildRequires:	lazarus >= 4.0.0
 BuildRequires:	fpc >= 3.2.4
 BuildRequires:  openssl-devel
 BuildRequires:  dbus-devel
-#  Required for GTK compile, i.e., without "--ws=qt5" option
 BuildRequires:	gtk2-devel
 
 %description
@@ -29,10 +28,7 @@ functionality than builtin Transmission web interface.
 %setup -q
 
 %build
-# QT build
-# lazbuild --bm=Release --ws=qt5 transgui.lpi
-# GTK build
-lazbuild --bm=Release --ws=gtk2: transgui.lpi
+lazbuild --bm=Release transgui.lpi
 
 %install
 mkdir -p %{buildroot}%{_bindir}
@@ -53,13 +49,11 @@ install -m 644 -t %{buildroot}%{_datadir}/transgui/lang lang/transgui.*
 %{_datadir}/transgui/lang
 
 %changelog
-* Fri Jun 6 2025 David King <dave@daveking.com> - 5.18.7.f-1
-	Changed build process to use fpc-3.2.4 and lazarus-4.0.0
-* Fri May 30 2025 David King <dave@daveking.com> - 5.18.8.f-0
-	Migrated to the lighterowl fork to fix issue restoring window size on restart
+* Sun Jun 8 2025 David King <dave@daveking.com> - 5.18.8.f-0
+- Migrated to the lighterowl fork to fix issue restoring window size on restart
 * Sun Sep 10 2023 David King <dave@daveking.com> - 5.18.0-3
-	Updated to latest development code from github.com
+- Updated to latest development code from github.com
 * Wed Nov 16 2022 David King <dave@daveking.com> - 5.18.0-2
-	Fixes to support Transmission 3.0
+- Fixes to support Transmission 3.0
 * Sat Dec 14 2019 David King <dave@daveking.com> - 5.18.0-1
-	Initial Version
+- Initial Version

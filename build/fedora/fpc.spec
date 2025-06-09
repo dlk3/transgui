@@ -11,6 +11,27 @@ URL:		https://www.freepascal.org
 Source0:	%{name}-%{version}.tar.gz
 BuildArch:	x86_64
 
+#  Set a macro to the name of the main executable, based on the system
+#  architecture we're building for.
+%ifarch %{arm}
+  %global ppcname ppcarm
+%else
+  %ifarch aarch64
+    %global ppcname ppca64
+  %else
+    %ifarch ppc64 ppc64le
+      %global ppcname ppcppc64
+    %else
+      %ifarch x86_64
+        %global ppcname ppcx64
+      %else
+        %global ppcname ppc386
+      %endif
+    %endif
+  %endif
+%endif
+
+Requires:		binutils
 BuildRequires:	fpc == 3.2.2
 BuildRequires: 	glibc-devel
 BuildRequires:	qt5pas-devel
@@ -30,7 +51,7 @@ make all
 %install
 make install INSTALL_PREFIX=%{buildroot}/usr
 mv %{buildroot}/usr/lib %{buildroot}%{_libdir}
-install -m 644 -Dt %{buildroot}%{_sysconfdir}/profile.d fpc-path.sh
+ln -sf %{_libdir}/%{name}/%{version}/%{ppcname} %{buildroot}%{_bindir}/%{ppcname}
 
 %files
 %{_bindir}/*

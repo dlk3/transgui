@@ -24,6 +24,8 @@ BuildRequires:  perl-generators
 BuildRequires:  qt5-qtbase-devel
 BuildRequires:  qt5-qtx11extras-devel
 BuildRequires:  qt6-qtbase-devel
+BuildRequires:  qt5pas-devel
+BuildRequires:  libX11-devel
 
 %description
 Lazarus is an IDE to create (graphical and console) applications with

@@ -141,17 +141,12 @@ else
 	cd "$SDK_DIR"
 	LAZARUS_COMMIT='cadda6230398688d6106fe37fb0673a9a2bf0cf3'
 	curl -L -o lazarus-src.tar.bz2 "https://gitlab.com/dkk089/lazarus/-/archive/${LAZARUS_COMMIT}/lazarus-${LAZARUS_COMMIT}.tar.bz2"
-
-	#  Fetch the  patchfile from my fork of lighterowl's transgui repo
-	curl -L -o makefile.patch "${FORK_URL}/makefile.patch"
-
 	tar xf lazarus-src.tar.bz2
 	mv "lazarus-${LAZARUS_COMMIT}" lazarus
-	patch -p1 <"${SDK_DIR}/makefile.patch"
 	cd lazarus
 	make bigide LCL_PLATFORM=qt5
 	mkdir -p "${LAZ_INSTALLDIR}"
-	make install INSTALL_PREFIX=$LAZ_INSTALLDIR _LIB=/usr/lib64 
+	make install INSTALL_PREFIX=$LAZ_INSTALLDIR
 
 	export PATH=${LAZ_INSTALLDIR}/lib64/lazarus:${LAZ_INSTALLDIR}/bin:$PATH
 	echo "lazbuild version = $(lazbuild -v)"
@@ -162,8 +157,8 @@ else
 
 	#  Create the Lazarus config file
 	mkdir /etc/lazarus
-	sed "s#__LAZARUSDIR__#${LAZ_INSTALLDIR}/lib64/lazarus#;s#__FPCSRCDIR__#${FPC_INSTALLDIR}/lib64/fpc/3.2.4#" \
-        ${LAZ_INSTALLDIR}/lib64/lazarus/tools/install/linux/environmentoptions.xml \
+	sed "s#__LAZARUSDIR__#${LAZ_INSTALLDIR}/share/lazarus#;s#__FPCSRCDIR__#${FPC_INSTALLDIR}/lib64/fpc/3.2.4#" \
+        ${LAZ_INSTALLDIR}/share/lazarus/tools/install/linux/environmentoptions.xml \
         > /etc/lazarus/environmentoptions.xml
 
 	#  Fetch the SPEC file from my fork of lighterowl's transgui repo

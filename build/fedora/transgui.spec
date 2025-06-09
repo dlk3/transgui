@@ -19,6 +19,11 @@ BuildRequires:  openssl-devel
 BuildRequires:  dbus-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
+BuildRequires:  gtk2-devel
+BuildRequires:  qt5-qtbase-devel
+BuildRequires:  qt5-qtx11extras-devel
+BuildRequires:  qt5pas-devel
+BuildRequires:  libX11-devel
 
 %description
 Transmission Remote GUI is feature rich cross platform front-end to remotely

@@ -57,7 +57,6 @@ ln -sf %{_libdir}/%{name}/%{version}/%{ppcname} %{buildroot}%{_bindir}/%{ppcname
 %{_bindir}/*
 %{_libdir}/%{name}
 %{_libdir}/libpas2jslib.so*
-%{_sysconfdir}/profile.d/*
 %dir %{_defaultdocdir}/%{name}-%{version}/
 %doc %{_defaultdocdir}/%{name}-%{version}/*
 

@@ -1,5 +1,27 @@
 #!/usr/bin/env sh
 
+#  Copyright (C) 2025  David King <dave@daveking.com>
+#
+#  This program is free software; you can redistribute it and/or
+#  modify it under the terms of the GNU General Public License,
+#  version 2, as published by the Free Software Foundation.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License,
+#  version 2, along with this program; if not, see 
+#  <https://www.gnu.org/licenses/old-licenses/gpl-2.0.html>.
+#################################################################################
+#
+#  Assemble the source RPM for lighterowl's version of transgui and submit it for
+#  building to my transgui COPR project ->
+#  https://copr.fedorainfracloud.org/coprs/dlk/transgui
+#
+#################################################################################
+
 set -e
 
 FORKURL="https://raw.githubusercontent.com/dlk3/transgui/refs/heads/copr/build/fedora"
@@ -24,7 +46,10 @@ tar czf ${HOME}/rpmbuild/SOURCES/transgui-${TRANSGUI_VERSION}.tar.gz transgui-${
 	
 #  Build the package file
 rm -f ${HOME}/rpmbuild/SRPMS/transgui-${TRANSGUI_VERSION}-*.src.rpm
+rm -f ${HOME}/rpmbuild/RPMS//x86_64/transgui-${TRANSGUI_VERSION}-*.rpm
 rpmbuild -bs ${HOME}/rpmbuild/SPECS/transgui.spec
+#  Build locally for testing
+#rpmbuild -ba ${HOME}/rpmbuild/SPECS/fpc.spec
 
 #  Submit to COPR
 copr-cli build transgui ${HOME}/rpmbuild/SRPMS/transgui-${TRANSGUI_VERSION}-*.src.rpm

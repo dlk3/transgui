@@ -151,7 +151,7 @@ else
 	cd lazarus
 	make bigide LCL_PLATFORM=qt5
 	mkdir -p "${LAZ_INSTALLDIR}"
-	make PREFIX=$LAZ_INSTALLDIR install
+	make install INSTALL_PREFIX=$LAZ_INSTALLDIR _LIB=/usr/lib64 
 
 	export PATH=${LAZ_INSTALLDIR}/lib64/lazarus:${LAZ_INSTALLDIR}/bin:$PATH
 	echo "lazbuild version = $(lazbuild -v)"

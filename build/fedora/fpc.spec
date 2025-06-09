@@ -62,7 +62,6 @@ ln -sf %{_libdir}/%{name}/%{version}/%{ppcname} %{buildroot}%{_bindir}/%{ppcname
 
 %post
 %{_libdir}/%{name}/%{version}/samplecfg %{_libdir}/%{name}/%version} %{_sysconfdir}
-export
 
 %changelog
 * Sun Jun 08 2025 dlk3 <dave@daveking.com> 3.2.4-0

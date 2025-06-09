@@ -43,6 +43,30 @@ set -e
 #  Date/time format for console messages
 DATEFMT="+%Y-%m-%d %H:%M:%S"
 
+#  If the "-t" option is passed on the command line, the script will
+#  build the podman container and open it to a shell prompt, without
+#  doing the transgui build.
+TESTING="no"
+while getopts ":bth" OPT; do
+        case "$OPT" in
+                t)
+                        TESTING="YES"
+                        ;;
+                h)
+                        echo "usage: $0 [-h] [-t]"
+                        echo 
+                        echo "   Where:"
+                        echo "      -h Show this help text"
+                        echo "      -t Start the build container with a bash prompt for testing"
+                        exit
+                        ;;
+                *)
+                        echo "usage: $0 [-h] [-t]"
+                        exit 1
+        esac
+done
+shift $((OPTIND-1))
+
 #  If we are not running inside the podman container, build the container and run the rpmbuild in it
 if [ "$container" != "oci" ]; then
 
@@ -60,15 +84,17 @@ __Dockerfile__
 	#  Build the container image
 	/usr/bin/podman build --tag=$CONTAINER_NAME /tmp
 	rm /tmp/Dockerfile
-	
-	#  Start the container with a bash prompt for testing
-	# /usr/bin/podman run --name=$CONTAINER_NAME -it --rm --env "TARGET_DIR=${RPM_OUTPUT_DIR}" --volume="$HOME":"$HOME" "localhost/$CONTAINER_NAME" /bin/bash
-	# exit
-	
-	#  Run this script inside the container to build the transgui RPM files
-	echo "$(date "$DATEFMT"): Starting the $CONTAINER_NAME container"
-	/usr/bin/podman run --name=$CONTAINER_NAME -it --rm --env "TARGET_DIR=${RPM_OUTPUT_DIR}" --volume="$HOME":"$HOME" "localhost/$CONTAINER_NAME" "$(realpath "$0")"
-	echo "$(date "$DATEFMT"): Stopping the $CONTAINER_NAME container"
+
+    if [ "$TESTING" == "YES" ]; then
+		#  Start the container with a bash prompt for testing
+		/usr/bin/podman run --name=$CONTAINER_NAME -it --rm --env "TARGET_DIR=${RPM_OUTPUT_DIR}" --volume="$HOME":"$HOME" "localhost/$CONTAINER_NAME" /bin/bash
+		exit
+	else
+		#  Run this script inside the container to build the transgui RPM files
+		echo "$(date "$DATEFMT"): Starting the $CONTAINER_NAME container"
+		/usr/bin/podman run --name=$CONTAINER_NAME -it --rm --env "TARGET_DIR=${RPM_OUTPUT_DIR}" --volume="$HOME":"$HOME" "localhost/$CONTAINER_NAME" "$(realpath "$0")"
+		echo "$(date "$DATEFMT"): Stopping the $CONTAINER_NAME container"
+	fi
 
 #  When we are run inside the container, do the build
 else

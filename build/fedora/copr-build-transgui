@@ -49,7 +49,7 @@ rm -f ${HOME}/rpmbuild/SRPMS/transgui-${TRANSGUI_VERSION}-*.src.rpm
 rm -f ${HOME}/rpmbuild/RPMS//x86_64/transgui-${TRANSGUI_VERSION}-*.rpm
 rpmbuild -bs ${HOME}/rpmbuild/SPECS/transgui.spec
 #  Build locally for testing
-#rpmbuild -ba ${HOME}/rpmbuild/SPECS/fpc.spec
+#rpmbuild -ba ${HOME}/rpmbuild/SPECS/transgui.spec
 
 #  Submit to COPR
 copr-cli build transgui ${HOME}/rpmbuild/SRPMS/transgui-${TRANSGUI_VERSION}-*.src.rpm

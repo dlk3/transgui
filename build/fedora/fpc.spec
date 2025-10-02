@@ -4,7 +4,7 @@
 
 Name:		fpc
 Version:	3.2.4
-Release:	0%{?dist}
+Release:	5%{?dist}
 Summary:	Free Pascal Compiler
 License:	GPLv2+ and LGPLv2+ with exceptions # https://wiki.lazarus.freepascal.org/FPC_modified_LGPL
 URL:		https://www.freepascal.org
@@ -31,8 +31,12 @@ BuildArch:	x86_64
   %endif
 %endif
 
-Requires:		binutils
+Requires:	binutils
+%if 0%{?fedora} > 43
+BuildRequires:  fpc
+%else
 BuildRequires:	fpc == 3.2.2
+%endif
 BuildRequires: 	glibc-devel
 BuildRequires:	qt5pas-devel
 BuildRequires:  libX11-devel
@@ -64,5 +68,17 @@ ln -sf %{_libdir}/%{name}/%{version}/%{ppcname} %{buildroot}%{_bindir}/%{ppcname
 %{_libdir}/%{name}/%{version}/samplecfg %{_libdir}/%{name}/%version} %{_sysconfdir}
 
 %changelog
+* Thu Oct 02 2025 dlk3 <dave@daveking.com> 3.2.4-5
+- Rebuilding package on COPR (without tito) 
+
+* Fri Jun 06 2025 dlk3 <dave@daveking.com> 3.2.4-4
+- Rebuilding package with tito
+
+* Thu Jun 05 2025 dlk3 <dave@daveking.com> 3.2.4-3
+- Test removing --nowait option from COPR build process (dave@daveking.com)
+
+* Thu Jun 05 2025 dlk3 <dave@daveking.com> 3.2.4-2
+- Developing spec file to work with tito build (dave@daveking.com)
+
 * Sun Jun 08 2025 dlk3 <dave@daveking.com> 3.2.4-0
 - Initial version of package

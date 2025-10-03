@@ -4,7 +4,7 @@
 
 Name:		lazarus
 Version:	4.0.0
-Release:	0%{?dist}
+Release:	1%{?dist}
 Summary:	Lazarus Component Library and IDE for Free Pascal
 License:	GPLv2+ and LGPLv2+ with exceptions # https://sourceforge.net/p/lazarus/laz.git/ci/lazarus_4_0/tree/COPYING.txt
 URL:		https://www.lazarus-ide.org/
@@ -63,5 +63,8 @@ sed 's#__LAZARUSDIR__#%{_datadir}/%{name}#;s#__FPCSRCDIR__#%{_libdir}/%{name}/%{
 %{_sysconfdir}/lazarus/*
 
 %changelog
+* Fri Oct 03 2025 dlk3 <dave@daveking.com> 4.0.0-1
+- Fedora 42 and later include lazarus 4.2, so this custom build isn't needed
+
 * Thu Jun 05 2025 dlk3 <dave@daveking.com> 4.0.0-0
 - Initial version of package

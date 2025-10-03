@@ -80,5 +80,5 @@ ln -sf %{_libdir}/%{name}/%{version}/%{ppcname} %{buildroot}%{_bindir}/%{ppcname
 * Thu Jun 05 2025 dlk3 <dave@daveking.com> 3.2.4-2
 - Developing spec file to work with tito build (dave@daveking.com)
 
-* Sun Jun 03 2025 dlk3 <dave@daveking.com> 3.2.4-0
+* Tue Jun 03 2025 dlk3 <dave@daveking.com> 3.2.4-0
 - Initial version of package

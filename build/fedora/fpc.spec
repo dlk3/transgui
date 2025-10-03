@@ -32,11 +32,7 @@ BuildArch:	x86_64
 %endif
 
 Requires:	binutils
-%if 0%{?fedora} > 43
-BuildRequires:  fpc
-%else
 BuildRequires:	fpc == 3.2.2
-%endif
 BuildRequires: 	glibc-devel
 BuildRequires:	qt5pas-devel
 BuildRequires:  libX11-devel

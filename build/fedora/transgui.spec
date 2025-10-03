@@ -16,7 +16,10 @@ Requires: GeoIP-GeoLite-data
 BuildRequires:	lazarus >= 4.0.0
 %if 0%{?fedora} > 41
 BuildRequires:  lazarus-lcl-gtk
+BuildRequires:  lazarus-lcl-gtk3
 BuildRequires:  lazarus-lcl-qt
+BuildRequires:  lazarus-lcl-qt5
+BuildRequires:  lazarus-lcl-qt6
 %endif
 BuildRequires:	fpc >= 3.2.4
 BuildRequires:  openssl-devel
